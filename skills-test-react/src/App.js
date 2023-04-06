@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import AccountMenu from './components/AccountMenu';
 import BasicForm from './components/BasicForm';
+import { Routes, Route } from 'react-router-dom';
 
 export default function App() {
 	const [openForm, setOpenForm] = React.useState(false);
@@ -18,13 +19,18 @@ export default function App() {
 	};
 	return (
 		<Container maxWidth="sm">
-			<AccountMenu onClick={handleOnClick} />
-			{openForm && <BasicForm />}
 			<Box sx={{ my: 4 }}>
 				<Typography variant="h4" component="h1" gutterBottom>
 					React Skills test
 				</Typography>
 			</Box>
+			<Routes>
+				<Route path="/" element={<AccountMenu onClick={handleOnClick} />}></Route>
+				<Route path='/todo' element={openForm && <BasicForm />}></Route>
+			</Routes>
+
+
+
 		</Container>
 	);
 }
