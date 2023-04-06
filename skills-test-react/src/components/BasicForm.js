@@ -8,17 +8,20 @@ const BasicForm = () => (
     <h1>TODO</h1>
     <Formik
       initialValues={{
-        firstName: '',
-        lastName: '',
-        email: '',
+        AddToDo: ''
       }}
-      onSubmit={(values) => {}}
+      onSubmit={(values) => {
+        console.log('Todo values', values.AddToDo);
+      }}
     >
-      <Form>
-        <label htmlFor="todo">Add ToDo </label>
-        <Field id="todo" name="Add ToDo" placeholder="TextHere" />
-        <button type="submit">Submit</button>
-      </Form>
+      {({ isSubmitting }) => (
+        <Form>
+          <label htmlFor="todo">Add ToDo </label>
+          <Field id="todo" name="AddToDo" placeholder="Add Text Here" />
+          <button type="submit" disabled={isSubmitting}>Submit</button>
+        </Form>
+      )}
+
     </Formik>
   </div>
 );
